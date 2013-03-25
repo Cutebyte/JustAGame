@@ -11,6 +11,8 @@ public class Entity {
 	//int xTex;
 	//int yTex;
 	
+	boolean falling;
+	
 	// - vars
 	
 	public Entity( int x, int y, int w, int h) {
@@ -18,6 +20,7 @@ public class Entity {
 		yPos = y;
 		wSiz = w;
 		hSiz = h;
+		falling = true;
 	}
 	
 	public void setPos( int x, int y ) {
@@ -62,7 +65,11 @@ public class Entity {
 	public void updatePos() {
 		xPos += xVel;
 		yPos += yVel;
-		if( Math.abs(xVel) > 1 ) xVel /= 1.15; else xVel = 0;
-		if( Math.abs(yVel) > 1 ) yVel /= 1.15; else yVel = 0;
+		if( Math.abs(xVel) > 0.5f ) xVel /= 1.15; else xVel = 0;
+		if( Math.abs(yVel) > 0.5f ) yVel /= 1.15; else yVel = 0;
+	}
+	
+	public boolean isFalling() {
+		return falling;
 	}
 }
