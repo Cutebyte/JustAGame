@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.trololo.Engine.Entity.Entity;
 
-//to jest głupi komentarz
+//to jest głupi komentarz numer 2
 
 public class Renderer {
 	ArrayList<Entity> renderList;
