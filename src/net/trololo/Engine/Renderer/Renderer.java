@@ -7,7 +7,7 @@ import org.lwjgl.opengl.GL11;
 
 import net.trololo.Engine.Entity.Entity;
 
-//to jest głupi komentarz
+//to jest głupi komentarz nie numer 2
 
 public class Renderer {
 	ArrayList<Entity> renderList;
@@ -17,7 +17,7 @@ public class Renderer {
 	}
 	//TO JE TO CO DODAŁEM :D
 	public void addToList( Entity entity ) {
-		System.out.print("Kaszanka");
+		System.out.print("Chleb");
 		renderList.add( entity );
 	}
 	
