@@ -1,19 +1,20 @@
-package net.hopskocz;
+package net.trololo;
+
+import net.trololo.Engine.Engine;
+import net.trololo.Engine.Entity.Entity;
 
 import org.lwjgl.LWJGLException;
 
-import net.hopskocz.Engine.Engine;
-import net.hopskocz.Engine.Entity.Entity;
 
 public class Game {
 
 	public static void main(String[] args) {
-		Engine engine = new Engine();
+		Engine engine = new Engine( "Just a game" );
 	try {
 		engine.init();
 		
-		Entity block = new Entity(32,64,32,32);
-		Entity block2 = new Entity(256,64,32,32);
+		Entity block = new Entity( 32, 64, 32, 32 );
+		Entity block2 = new Entity( 256, 64, 32, 32 );
 		engine.renderer.addToList( block );
 		engine.renderer.addToList( block2 );
 		
@@ -44,7 +45,7 @@ public class Game {
 	finally {
 		engine.cleanup();
 	}
-		engine.cleanup();
+	engine.cleanup();
 	}
 
 }

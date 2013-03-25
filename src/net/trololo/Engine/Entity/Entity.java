@@ -1,4 +1,4 @@
-package net.hopskocz.Engine.Entity;
+package net.trololo.Engine.Entity;
 
 public class Entity {
 	// + vars

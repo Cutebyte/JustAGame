@@ -1,4 +1,4 @@
-package net.hopskocz.Engine.Keyboard;
+package net.trololo.Engine.Keyboard;
 
 import org.lwjgl.input.Keyboard;
 

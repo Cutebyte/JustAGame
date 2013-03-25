@@ -1,11 +1,11 @@
-package net.hopskocz.Engine.Renderer;
+package net.trololo.Engine.Renderer;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 import org.lwjgl.opengl.GL11;
 
-import net.hopskocz.Engine.Entity.Entity;
+import net.trololo.Engine.Entity.Entity;
 
 public class Renderer {
 	ArrayList<Entity> renderList;
