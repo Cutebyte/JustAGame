@@ -14,13 +14,13 @@ import org.lwjgl.opengl.GL11;
 public class Engine {
 	
 	//Variables
-	boolean 			finished;
+	boolean finished;
 	
-	public KeysCtl 		keyboard;
-	public Renderer 	renderer;
-	public Physics		physics;
+	public KeysCtl keyboard;
+	public Renderer renderer;
+	public Physics physics;
 	
-	String 				gameTitle;
+	String gameTitle;
 	
 	public Engine( String gameTitleIn ) {
 		finished = false;

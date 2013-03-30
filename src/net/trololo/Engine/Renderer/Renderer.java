@@ -15,9 +15,8 @@ public class Renderer {
 	public Renderer() {
 		renderList = new ArrayList<Entity>();
 	}
-	//TO JE TO CO DODAŁEM :D
+
 	public void addToList( Entity entity ) {
-		System.out.print("Chleb");
 		renderList.add( entity );
 	}
 	
@@ -28,7 +27,7 @@ public class Renderer {
 		
 		Entity e;
 		
-		GL11.glClearColor(0.0f, 0.5f, 0.2f, 1.0f);
+		GL11.glClearColor(0.0f, 0.0f, 0.2f, 1.0f);
 		
 		for( Iterator<Entity> itr = renderList.iterator(); itr.hasNext();) {
 			e = itr.next();

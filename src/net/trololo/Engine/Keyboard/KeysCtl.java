@@ -4,7 +4,7 @@ import org.lwjgl.input.Keyboard;
 
 public class KeysCtl {
 	
-	KeyConf keys;
+	public KeyConf keys;
 	
 	public KeysCtl() {
 		keys = new KeyConf();
