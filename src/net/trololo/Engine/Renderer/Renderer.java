@@ -7,8 +7,6 @@ import org.lwjgl.opengl.GL11;
 
 import net.trololo.Engine.Entity.Entity;
 
-//to jest głupi komentarz numer 2
-
 public class Renderer {
 	ArrayList<Entity> renderList;
 	
@@ -22,8 +20,6 @@ public class Renderer {
 	}
 	
 	public void render() {
-		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT); //| GL11.GL_STENCIL_BUFFER_BIT); // clear screen
-		GL11.glLoadIdentity();
 		//GL11.glTranslatef(0, 0, 0);
 		
 		Entity e;
@@ -34,6 +30,7 @@ public class Renderer {
 			e = itr.next();
 			GL11.glPushMatrix();
 			GL11.glTranslatef(0, 0, 0.0f);
+			GL11.glColor3f(0.f, 1.f, 0.f);
 			
 			GL11.glBegin(GL11.GL_QUADS);
 				GL11.glVertex2i( e.getX(), e.getY() );
