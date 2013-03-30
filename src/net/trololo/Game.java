@@ -17,6 +17,8 @@ public class Game {
 		Entity block2 = new Entity( 256, 64, 32, 32 );
 		engine.renderer.addToList( block );
 		engine.renderer.addToList( block2 );
+		engine.physics.addToList( block );
+		engine.physics.addToList( block2 );
 		
 		while( !engine.isFinished() ) {
 			engine.run();
@@ -34,8 +36,10 @@ public class Game {
 			if( engine.keyboard.isDown(12) ) block2.setForce( block2.getXForce(), -10 );
 			if( engine.keyboard.isDown(13) ) block2.setForce( -10, block2.getYForce() );
 			if( engine.keyboard.isDown(14) ) block2.setForce( 10, block2.getYForce() );
-			block.updatePos();
-			block2.updatePos();
+			//block.updatePos();
+			//block2.updatePos();
+			if( block.getY() < 0 ) block.setPos( block.getX(), 512 );
+			if( block2.getY() < 0 ) block2.setPos( block2.getX(), 512 );
 		}
 		
 		

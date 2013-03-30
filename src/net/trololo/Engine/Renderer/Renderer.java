@@ -15,7 +15,7 @@ public class Renderer {
 	}
 	//TO JE TO CO DODAŁEM :D
 	public void addToList( Entity entity ) {
-		System.out.print("Kaszanka");
+		System.out.print("Chleb");
 		renderList.add( entity );
 	}
 	

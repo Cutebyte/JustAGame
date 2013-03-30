@@ -1,6 +1,7 @@
 package net.trololo.Engine;
 
 import net.trololo.Engine.Keyboard.KeysCtl;
+import net.trololo.Engine.Physics.Physics;
 import net.trololo.Engine.Renderer.Renderer;
 
 import org.lwjgl.LWJGLException;
@@ -17,6 +18,7 @@ public class Engine {
 	
 	public KeysCtl 		keyboard;
 	public Renderer 	renderer;
+	public Physics		physics;
 	
 	String 				gameTitle;
 	
@@ -25,10 +27,11 @@ public class Engine {
 		keyboard = new KeysCtl();
 		renderer = new Renderer();
 		gameTitle = gameTitleIn;
+		physics = new Physics();
 	}
 	
 	public int init(  ) throws LWJGLException {
-		Display.setTitle( "Menda" ); //setting window title
+		Display.setTitle( gameTitle ); //setting window title
 		
 		Display.setVSyncEnabled(true);
 		Display.setDisplayMode(new DisplayMode(640,480)); // TODO: changing resolution / screen ratio changes
@@ -91,6 +94,7 @@ public class Engine {
 		else if(Display.isActive()) // if window is active, then do everything what game should
 		{
 			//logic();
+			physics.applyPhysics();
 			keyboard.updateKeys();
 			renderer.render();
 			Display.sync(60);
