@@ -1,7 +1,7 @@
 package net.trololo;
 
 import net.trololo.Engine.Engine;
-import net.trololo.Engine.Entity.Entity;
+import net.trololo.Engine.Entity.Player;
 
 import org.lwjgl.LWJGLException;
 
@@ -9,37 +9,30 @@ import org.lwjgl.LWJGLException;
 public class Game {
 
 	public static void main(String[] args) {
-		Engine engine = new Engine( "Just a game" );
+		Engine engine = new Engine( "Slay them all" );
 	try {
 		engine.init();
 		
-		Entity block = new Entity( 32, 64, 32, 32 );
-		Entity block2 = new Entity( 256, 64, 32, 32 );
-		engine.renderer.addToList( block );
-		engine.renderer.addToList( block2 );
-		engine.physics.addToList( block );
-		engine.physics.addToList( block2 );
+		Player player = new Player( 32, 64, 32, 32, engine.keyboard, engine.renderer, engine.physics );
+		Player player2 = new Player( 64, 64, 32, 32, engine.keyboard, engine.renderer, engine.physics, 1);
+		player.addToCollisionList( player2 );
+		player2.addToCollisionList( player );
 		
 		while( !engine.isFinished() ) {
 			engine.run();
 			if( engine.keyboard.isDown(0) ) engine.finish();
-			/*
-			if( engine.keyboard.isDown(1) ) block.setPos( block.getX(), block.getY()+3 );
-			if( engine.keyboard.isDown(2) ) block.setPos( block.getX(), block.getY()-3 );
-			if( engine.keyboard.isDown(3) ) block.setPos( block.getX()-3, block.getY() );
-			if( engine.keyboard.isDown(4) ) block.setPos( block.getX()+3, block.getY() ); */
-			if( engine.keyboard.isDown(1) ) block.setForce( block.getXForce(), 10 );
-			if( engine.keyboard.isDown(2) ) block.setForce( block.getXForce(), -10 );
-			if( engine.keyboard.isDown(3) ) block.setForce( -10, block.getYForce() );
-			if( engine.keyboard.isDown(4) ) block.setForce( 10, block.getYForce() );
-			if( engine.keyboard.isDown(11) ) block2.setForce( block2.getXForce(), 10 );
-			if( engine.keyboard.isDown(12) ) block2.setForce( block2.getXForce(), -10 );
-			if( engine.keyboard.isDown(13) ) block2.setForce( -10, block2.getYForce() );
-			if( engine.keyboard.isDown(14) ) block2.setForce( 10, block2.getYForce() );
-			//block.updatePos();
-			//block2.updatePos();
-			if( block.getY() < 0 ) block.setPos( block.getX(), 512 );
-			if( block2.getY() < 0 ) block2.setPos( block2.getX(), 512 );
+			player.control();
+			player2.control();
+			// fun stuff
+			if( player.getX() < -32 ) player.setPos( 640, player.getY() );
+			if( player.getX() > 640 ) player.setPos( -32, player.getY() );
+			if( player.getY() < 0 ) player.setPos( player.getX(), 512 );
+			if( player.getY() > 512 ) player.setPos( player.getX(), 0 );
+			
+			if( player2.getX() < -32 ) player2.setPos( 640, player2.getY() );
+			if( player2.getX() > 640 ) player2.setPos( -32, player2.getY() );
+			if( player2.getY() < 0 ) player2.setPos( player2.getX(), 512 );
+			if( player2.getY() > 512 ) player2.setPos( player2.getX(), 0 );
 		}
 		
 		

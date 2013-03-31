@@ -19,23 +19,8 @@ public class Engine {
 	
 	public KeysCtl 		keyboard;
 	public Renderer 	renderer;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 	public Physics		physics;
-=======
 	public Level        level;
->>>>>>> Stashed changes
-=======
-	public Level        level;
->>>>>>> Stashed changes
-=======
-	public Level        level;
->>>>>>> Stashed changes
-=======
-	public Level        level;
->>>>>>> Stashed changes
 	
 	String 				gameTitle;
 	
@@ -44,23 +29,8 @@ public class Engine {
 		keyboard = new KeysCtl();
 		renderer = new Renderer();
 		gameTitle = gameTitleIn;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 		physics = new Physics();
-=======
 		level = new Level();
->>>>>>> Stashed changes
-=======
-		level = new Level();
->>>>>>> Stashed changes
-=======
-		level = new Level();
->>>>>>> Stashed changes
-=======
-		level = new Level();
->>>>>>> Stashed changes
 	}
 	
 	public int init(  ) throws LWJGLException {
