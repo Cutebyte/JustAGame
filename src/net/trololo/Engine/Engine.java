@@ -3,6 +3,7 @@ package net.trololo.Engine;
 import net.trololo.Engine.Keyboard.KeysCtl;
 import net.trololo.Engine.Physics.Physics;
 import net.trololo.Engine.Renderer.Renderer;
+import net.trololo.Level.Level;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.Sys;
@@ -18,7 +19,23 @@ public class Engine {
 	
 	public KeysCtl 		keyboard;
 	public Renderer 	renderer;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 	public Physics		physics;
+=======
+	public Level        level;
+>>>>>>> Stashed changes
+=======
+	public Level        level;
+>>>>>>> Stashed changes
+=======
+	public Level        level;
+>>>>>>> Stashed changes
+=======
+	public Level        level;
+>>>>>>> Stashed changes
 	
 	String 				gameTitle;
 	
@@ -27,7 +44,23 @@ public class Engine {
 		keyboard = new KeysCtl();
 		renderer = new Renderer();
 		gameTitle = gameTitleIn;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
 		physics = new Physics();
+=======
+		level = new Level();
+>>>>>>> Stashed changes
+=======
+		level = new Level();
+>>>>>>> Stashed changes
+=======
+		level = new Level();
+>>>>>>> Stashed changes
+=======
+		level = new Level();
+>>>>>>> Stashed changes
 	}
 	
 	public int init(  ) throws LWJGLException {
@@ -96,7 +129,13 @@ public class Engine {
 			//logic();
 			physics.applyPhysics();
 			keyboard.updateKeys();
+			
+			GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT); //| GL11.GL_STENCIL_BUFFER_BIT); // clear screen
+	        GL11.glLoadIdentity();
+	        
 			renderer.render();
+			level.render();
+			
 			Display.sync(60);
 		}
 		else // if not active, then sleep

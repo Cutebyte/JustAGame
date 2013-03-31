@@ -69,12 +69,14 @@ public class Terrain {
     }
     
     private boolean checkTile(int x, int y) {
-        if(x < 0 || y < 0 || x > sizeX || y > sizeY)
+        if(x < 0 || y < 0 || x >= sizeX || y >= sizeY)
             return false;
         return tilesList[x * sizeX + y];
     }
     
     private boolean setTile(int x, int y) {
+        if(x < 0 || y < 0 || x >= sizeX || y >= sizeY)
+            return false;
         tilesList[x * sizeX + y] = true; 
         return true;
     }
@@ -99,11 +101,49 @@ public class Terrain {
         return false; 
     }
     
+    private boolean checkNext1(Miner miner) {
+        if(miner.dir == 0) {
+            return checkTile(miner.x, miner.y + 1);
+        }
+        if(miner.dir == 2) {
+            return checkTile(miner.x, miner.y - 1);
+        }
+        if(miner.dir == 1) {
+            return checkTile(miner.x + 1, miner.y);
+        }
+        if(miner.dir == 3) {
+            return checkTile(miner.x - 1, miner.y);
+        }
+        return false; 
+    }
+    
+    private boolean checkNext2(Miner miner) {
+        if(miner.dir == 0) {
+            return checkTile(miner.x, miner.y + 2);
+        }
+        if(miner.dir == 2) {
+            return checkTile(miner.x, miner.y - 2);
+        }
+        if(miner.dir == 1) {
+            return checkTile(miner.x + 2, miner.y);
+        }
+        if(miner.dir == 3) {
+            return checkTile(miner.x - 2, miner.y);
+        }
+        return false; 
+    }
+    
     private boolean turn(Miner miner) {
-        if(roll()) 
+        if(roll()) {
             miner.turnLeft();
-        else
+            if(checkNext1(miner) || checkNext2(miner))
+                miner.turnRight();
+            
+        } else {
             miner.turnRight();
+            if(checkNext1(miner) || checkNext2(miner))
+                miner.turnLeft();
+        }
         return true;
     }
     
@@ -130,25 +170,25 @@ public class Terrain {
     public void generate() {
         boolean generating = true; 
         
-        int tunelCount = rand.nextInt(25) + 10;
+        int tunelCount = rand.nextInt(35) + 10;
         int size = 0; 
         
-        int initialX = rand.nextInt(sizeX - 10) + 5;
-        int initialY = rand.nextInt(sizeY - 10) + 5;
+        int initialX = rand.nextInt(sizeX - 20) + 10;
+        int initialY = rand.nextInt(sizeY - 20) + 10;
         
         Miner miner = new Miner(initialX, initialY, rand.nextInt(4));
         
         while(generating) {
             
             
-            if(rand.nextInt(300) > 399) {
+            if(rand.nextInt(1000) > 999) {
                 turn(miner);
             }
             if(checkMiner(miner)) {
                 turn(miner);
             }
             miner.alive = go(miner);
-            if(rand.nextInt(500) > 499) {
+            if(rand.nextInt(2000) > 1999) {
                 miner.alive = false;
             }
            
